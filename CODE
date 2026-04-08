@@ -1,0 +1,39 @@
+import pandas as pd
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+
+landtemps = pd.read_csv('landtempssample.csv')
+landtemps['year'] = pd.to_numeric(landtemps['year'], errors='coerce')
+landtemps['month'] = pd.to_numeric(landtemps['month'], errors='coerce')
+landtemps['temp'] = pd.to_numeric(landtemps['temp'], errors='coerce')
+landtemps=landtemps.dropna()
+landtemps['date']= pd.to_datetime(landtemps[['year','month']].assign(day=1))
+landtemps=landtemps.drop(['year','month','countryid'],axis=1)
+print(landtemps.columns)
+landtemps.index = range(1, len(landtemps) + 1)
+landtemps.head(7)
+landtemps.describe()
+stats.describe(landtemps['temp'])
+stats.describe(landtemps['latitude'])
+stats.describe(landtemps['longitude'])
+sns.pairplot(landtemps[['temp', 'latitude', 'longitude']])
+plt.show()
+hot_countries = landtemps.groupby('country')['temp'].mean().sort_values(ascending=False).head(10)
+print("Top 10 hot countries :", hot_countries)
+cold_countries = landtemps.groupby('country')['temp'].mean().sort_values(ascending=True).head(10)
+print('Top 10 cold countries:', cold_countries)
+avg_temp_by_date = landtemps.groupby('date')['temp'].mean().reset_index()
+
+fig = px.line(avg_temp_by_date, x='date', y='temp', title='Evolution of Average Temperatures Over Time')
+fig.update_xaxes(title_text='Date')
+fig.update_yaxes(title_text='Average Temperature (°C)')
+fig.show()
+
+correlation_matrix = landtemps[['temp', 'latitude', 'longitude']].corr()
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5)
+plt.title('Correlation Heatmap of Temperature, Latitude, and Longitude')
+plt.show()
