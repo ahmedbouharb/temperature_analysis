@@ -1,0 +1,17 @@
+# Global Land Temperature Analysis
+
+A comprehensive data analysis project examining global land temperature patterns, identifying the hottest and coldest countries, and visualizing temperature trends over time using Python.
+
+## 📊 Overview
+
+This project analyzes historical land temperature data to uncover patterns and relationships between temperature, geographic location (latitude/longitude), and temporal trends. The analysis includes statistical summaries, correlation studies, and interactive visualizations.
+
+## 🚀 Features
+
+- **Data Cleaning & Preprocessing**: Automated handling of missing values, data type conversion, and date formatting
+- **Statistical Analysis**: Comprehensive descriptive statistics using scipy.stats
+- **Geographic Pattern Detection**: Identification of top 10 hottest and coldest countries
+- **Temporal Analysis**: Time-series visualization of global temperature evolution
+- **Correlation Studies**: Heatmap analysis of relationships between temperature, latitude, and longitude
+- **Interactive Visualizations**: Plotly-based interactive time series charts
+
