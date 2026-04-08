@@ -13,5 +13,16 @@ This project analyzes historical land temperature data to uncover patterns and r
 - **Geographic Pattern Detection**: Identification of top 10 hottest and coldest countries
 - **Temporal Analysis**: Time-series visualization of global temperature evolution
 - **Correlation Studies**: Heatmap analysis of relationships between temperature, latitude, and longitude
-- **Interactive Visualizations**: Plotly-based interactive time series charts
+- **Interactive Visualizations**: Plotly-based interactive time series charts.
+Contributions are welcome! Please:
+
+    Fork the repository
+
+    Create a feature branch
+
+    Commit your changes
+
+    Push to the branch
+
+    Open a Pull Request
 
